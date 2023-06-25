@@ -1,15 +1,15 @@
 import { derived, writable } from 'svelte/store';
 import translations from '../translations';
-import type es from '../translations/es';
+import type en from '../translations/en';
 
 export type Translation = keyof typeof translations;
 
-export type TranslationKey = keyof typeof es;
+export type TranslationKey = keyof typeof en;
 
 export const locale = writable<Translation>('en');
 export const locales = Object.keys(translations);
 
-function translate(locale: Translation, key: TranslationKey, vars: { [x: string]: any }) {
+function translate(locale: Translation = 'en', key: TranslationKey, vars: { [x: string]: any }) {
 	// Grab the translation from the translations object.
 	let text = translations[locale][key];
 
